@@ -7,8 +7,9 @@ class Hand:
         self.handNumber: int = 0
         self.pfr: bool = False
         self.VPip: bool = False
-        self.hero_hand: str = ""
+        self.heroHand: str = ""
         self.villian_hand: str = ""
+        self.startingChips = 0
     
     def startHandAction(self):
         self.handaction: HandAction = HandAction(self.bb_stakes)
@@ -29,3 +30,4 @@ class Session:
         self.sessionHands: list[Hand] = []
         self.date: str = ""
         self.sessionProfit: float = 0
+        self.bb_stakes: float = 0
