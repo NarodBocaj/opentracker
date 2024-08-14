@@ -46,6 +46,9 @@ def ZoomParser(file: str, handList: list[Hand], sess: Session):
                 temp = re.findall(r'\d+', line)
             tempHand.profit_from_hand += float(temp[0])
 
+        if "Return uncalled" in line:
+            tempHand.showdown = False
+
         if "Hand result" in line and "[ME]" in line:
             temp = re.findall(r'\d+\.\d+', line)
             if not temp:

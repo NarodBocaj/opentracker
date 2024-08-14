@@ -10,6 +10,7 @@ class Hand:
         self.heroHand: str = ""
         self.villian_hand: str = ""
         self.startingChips = 0
+        self.showdown = True
     
     def startHandAction(self):
         self.handaction: HandAction = HandAction(self.bb_stakes)

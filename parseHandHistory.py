@@ -3,9 +3,11 @@
 import os
 import re
 
+
 import ignitionParser
 from poker_stuff import Hand, Session
-
+from charts import plotWinRate
+import stats
 
 def parseHands(directory):
 
@@ -18,8 +20,7 @@ def parseHands(directory):
         with open(file_path, 'r') as file:
             ignitionParser.ZoomParser(file, hands, sess)
     print(f"Total of {len(hands)} hands played")
-            
-
+    return hands
 
 
 
@@ -28,4 +29,7 @@ if __name__ == "__main__":
     # directory = "test_handhistory"
     # directory = "example_handhistory"
     # directory = "test1"
-   parseHands(directory)
+   hands = parseHands(directory)
+   stats.calcWinrateper100bb(hands)
+   profitList, SDprofitList, noSDprofitList, bbprofitList = stats.handStats(hands)
+   plotWinRate(profitList, SDprofitList, noSDprofitList)
