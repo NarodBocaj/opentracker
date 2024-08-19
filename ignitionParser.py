@@ -21,7 +21,7 @@ def ZoomParser(file: str, handList: list[Hand], sess: Session):
             tempHand.pos = pos
             cards_match = re.search(r'\[(?!ME\])([^\]]+)\]', line)
             cards = cards_match.group(1) if cards_match else None
-            tempHand.heroHand = cards
+            tempHand.myHand = cards
 
         if "[ME]" in line and "in chips" in line:
             temp = re.findall(r'\d+\.\d+', line)
